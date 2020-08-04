@@ -21,7 +21,7 @@ export class DataService {
   URL: string = "https:localhost:8080/tags"
 
   /** POST: add a new tag to the database */
-  addtag(tag: string) {
+  addtag(tag: string[]) {
     return this.http.post<string[]>(this.URL, tag);
   }
 }

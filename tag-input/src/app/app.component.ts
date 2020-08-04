@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { Constructor } from '@angular/material/core/typings/common-behaviors/constructor';
+import { DataService } from './data.service';
 
 export interface Tag {
   name: string;
@@ -18,6 +20,8 @@ export class AppComponent {
   addOnBlur = true;
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  constructor(private data: DataService) {}
 
   tags: Tag[] = [
     {name: 'Fotógrafo'},
@@ -48,6 +52,16 @@ export class AppComponent {
     }
   }
   sendTags(){
-    
+    let tagsJson: string[];
+    tagsJson = [];
+    this.tags.forEach(element => {
+      tagsJson.push(element.name);
+    });
+
+    if(tagsJson.length > 0){
+      this.data.addtag(tagsJson).subscribe(result =>{
+          console.log(result);
+        });
+    }
   }
 }

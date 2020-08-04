@@ -18,7 +18,7 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   // mude a url pra sua base
-  URL: string = "https:localhost:8080/tags"
+  URL: string = "http://localhost:8080/tags"
 
   /** POST: add a new tag to the database */
   addtag(tag: string[]) {

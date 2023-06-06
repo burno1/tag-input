@@ -33,6 +33,11 @@ export class AppComponent {
     const input = event.input;
     const value = event.value;
 
+    if(this.tags.length > 10){
+      alert('limite maximo excedido');
+      return;
+    }
+
     // Add our tag
     if ((value || '').trim()) {
       this.tags.push({name: value.trim()});
